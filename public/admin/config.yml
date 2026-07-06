@@ -1,0 +1,139 @@
+# =========================================================
+#  Panneau d'administration - Le Comptoir de Nath
+#  Test en local : "npx decap-server" puis ouvrir /admin/index.html
+# =========================================================
+
+local_backend: true
+
+backend:
+  name: github
+  repo: NeoStelod/le-comptoir-de-nath
+  branch: main
+
+media_folder: "public/images"
+public_folder: "/images"
+
+locale: "fr"
+logo_url: "/logo.png"
+site_url: "/"
+display_url: "/"
+
+collections:
+  # ---- INFOS DU SITE ----
+  - name: "infos"
+    label: "Infos du restaurant"
+    description: "Le nom, l'adresse, les horaires et les coordonnées affichés sur le site."
+    editor:
+      preview: false
+    files:
+      - name: "site"
+        label: "Informations"
+        file: "src/data/site.json"
+        fields:
+          - { name: "name", label: "Nom du restaurant", widget: "string" }
+          - { name: "tagline", label: "Sous-titre", widget: "string", hint: "Exemple : Crêperie Bretonne" }
+          - { name: "baseline", label: "Petite phrase d'accroche", widget: "string", hint: "Exemple : Fait maison · Produits locaux" }
+          - { name: "intro", label: "Texte de présentation", widget: "text", hint: "Le paragraphe qui présente le restaurant sur la page d'accueil." }
+          - { name: "address", label: "Adresse (rue)", widget: "string", hint: "Exemple : 23 Avenue du Plan d'Eau" }
+          - { name: "postcode", label: "Code postal", widget: "string" }
+          - { name: "city", label: "Ville", widget: "string" }
+          - { name: "email", label: "Email", widget: "string", hint: "L'adresse mail qui reçoit les messages du formulaire de contact." }
+          - { name: "phone", label: "Téléphone", widget: "string", required: false }
+          - { name: "hoursNote", label: "Message sur les horaires", widget: "string", required: false, hint: "Affiché si les horaires ne sont pas remplis. Ex : Horaires bientôt disponibles" }
+          - name: "hours"
+            label: "Horaires d'ouverture"
+            label_singular: "Jour"
+            widget: "list"
+            summary: "{{fields.day}} : {{fields.value}}"
+            hint: "Laissez la case horaire vide pour un jour de fermeture."
+            fields:
+              - { name: "day", label: "Jour", widget: "string" }
+              - { name: "value", label: "Horaire", widget: "string", required: false, hint: "Exemple : 12h-14h / 19h-22h" }
+          - name: "social"
+            label: "Réseaux sociaux"
+            widget: "object"
+            fields:
+              - { name: "facebook", label: "Lien de la page Facebook", widget: "string", required: false }
+              - { name: "instagram", label: "Lien du compte Instagram", widget: "string", required: false }
+          - name: "story"
+            label: "Notre histoire"
+            widget: "text"
+            required: false
+            hint: "Le texte « Notre histoire » de la page d'accueil. Laissez une ligne vide entre chaque paragraphe."
+          - name: "specialties"
+            label: "Nos spécialités (mises en avant)"
+            label_singular: "Spécialité"
+            widget: "list"
+            required: false
+            summary: "{{fields.name}}"
+            hint: "Les plats mis en avant sur la page d'accueil."
+            fields:
+              - { name: "name", label: "Nom", widget: "string" }
+              - { name: "desc", label: "Description", widget: "string", required: false }
+              - { name: "image", label: "Photo", widget: "image", required: false, hint: "La photo de la spécialité." }
+          - name: "practical"
+            label: "Infos pratiques"
+            label_singular: "Info"
+            widget: "list"
+            required: false
+            summary: "{{fields.icon}} {{fields.label}}"
+            hint: "Les petites infos (à emporter, paiement, terrasse...) affichées en pastilles sur la page d'accueil."
+            fields:
+              - { name: "icon", label: "Icône (emoji)", widget: "string", required: false, hint: "Exemple : 🥡 💳 ☀️ 🅿️" }
+              - { name: "label", label: "Texte", widget: "string" }
+
+  # ---- LA CARTE ----
+  - name: "carte"
+    label: "La Carte"
+    description: "Les galettes, crêpes, gaufres et boissons, avec leurs prix."
+    editor:
+      preview: false
+    files:
+      - name: "carte"
+        label: "Le menu"
+        file: "src/data/carte.json"
+        fields:
+          - name: "sections"
+            label: "Sections de la carte"
+            label_singular: "Section"
+            widget: "list"
+            summary: "{{fields.title}}  ({{fields.group}})"
+            hint: "Chaque section est un encadré de la carte (ex : Galettes, Crêpes, Bières). Glissez pour réordonner."
+            fields:
+              - name: "group"
+                label: "Catégorie"
+                widget: "select"
+                options: ["Salé", "Sucré", "Boissons"]
+                hint: "Dans quelle partie de la carte ranger cette section ?"
+              - { name: "title", label: "Titre de la section", widget: "string", hint: "Exemple : Galettes, Crêpes au froment, Bières..." }
+              - { name: "subtitle", label: "Sous-titre", widget: "string", required: false, hint: "Facultatif. Exemple : Blé noir" }
+              - name: "items"
+                label: "Produits"
+                label_singular: "Produit"
+                widget: "list"
+                summary: "{{fields.name}} — {{fields.price}} €"
+                fields:
+                  - { name: "name", label: "Nom du produit", widget: "string", hint: "Exemple : La Complète" }
+                  - { name: "desc", label: "Description", widget: "string", required: false, hint: "Facultatif : les ingrédients. Exemple : Œuf, emmental, jambon" }
+                  - { name: "price", label: "Prix", widget: "string", hint: "Juste le nombre, avec une virgule. Exemple : 7,50" }
+
+  # ---- GALERIE ----
+  - name: "galerie"
+    label: "Photos"
+    description: "Les photos affichées dans la galerie du site."
+    editor:
+      preview: false
+    files:
+      - name: "galerie"
+        label: "Galerie photos"
+        file: "src/data/galerie.json"
+        fields:
+          - name: "photos"
+            label: "Photos"
+            label_singular: "Photo"
+            widget: "list"
+            summary: "{{fields.alt}}"
+            hint: "Cliquez sur « Ajouter Photo » pour envoyer une image depuis votre ordinateur ou téléphone."
+            fields:
+              - { name: "src", label: "Photo", widget: "image", hint: "Choisissez ou glissez une image." }
+              - { name: "alt", label: "Légende", widget: "string", required: false, hint: "Facultatif : décrivez la photo en quelques mots." }

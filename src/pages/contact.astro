@@ -1,0 +1,121 @@
+---
+import Base from "../layouts/Base.astro";
+import Waves from "../components/Waves.astro";
+import site from "../data/site.json";
+const mapsQuery = `${site.address}, ${site.postcode} ${site.city}`;
+const mapSrc = `https://maps.google.com/maps?q=${encodeURIComponent(mapsQuery)}&z=15&output=embed`;
+---
+
+<Base title="Contact" description="Contactez la crêperie Le Comptoir de Nath aux Ancizes-Comps : adresse, plan d'accès et formulaire de contact.">
+  <section class="carte-hero">
+    <div class="container">
+      <img src="/logo.png" class="logo-badge" alt="Le Comptoir de Nath" />
+      <span class="section-eyebrow">Une question, une réservation ?</span>
+      <h1 class="section-title">Nous <span class="accent">contacter</span></h1>
+      <div class="divider"><span class="tri">✦</span></div>
+    </div>
+    <Waves />
+  </section>
+
+  <section style="padding: 10px 0 70px">
+    <div class="container contact-grid">
+      <!-- Infos + formulaire -->
+      <div>
+        <div class="contact-cards">
+          <div class="contact-card"><h3>📍 Adresse</h3><p>{site.address}<br />{site.postcode} {site.city}</p></div>
+          {site.phone ? <div class="contact-card"><h3>☎️ Téléphone</h3><p><a href={`tel:${site.phone.replace(/\s/g, "")}`}>{site.phone}</a></p></div> : null}
+          <div class="contact-card"><h3>✉️ Email</h3><p><a href={`mailto:${site.email}`}>{site.email}</a></p></div>
+          <div class="contact-card"><h3>🕐 Horaires</h3><p>{site.hoursNote}</p></div>
+        </div>
+
+        <h2 class="section-title" style="font-size:1.8rem; margin:34px 0 6px">Écrivez-nous</h2>
+        <p style="color:var(--muted); margin-bottom:18px">On vous répond au plus vite.</p>
+
+        <!-- Formulaire via Web3Forms (gratuit, sans serveur). Remplace la cle par la tienne (voir README). -->
+        <form class="contact-form" id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="41c81132-0d0d-4e0b-a290-10886b9dce1d" />
+          <input type="hidden" name="subject" value="Nouveau message - Le Comptoir de Nath" />
+          <input type="hidden" name="from_name" value="Site Le Comptoir de Nath" />
+          <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
+          <div class="form-row">
+            <input type="text" name="name" placeholder="Votre nom" required />
+            <input type="email" name="email" placeholder="Votre email" required />
+          </div>
+          <input type="text" name="phone" placeholder="Téléphone (facultatif)" />
+          <textarea name="message" rows="5" placeholder="Votre message" required></textarea>
+          <button type="submit" class="btn btn-primary">Envoyer le message</button>
+          <p class="form-result" id="form-result" role="status"></p>
+        </form>
+
+        <script is:inline>
+          (function () {
+            var form = document.getElementById("contact-form");
+            var result = document.getElementById("form-result");
+            if (!form) return;
+            form.addEventListener("submit", async function (e) {
+              e.preventDefault();
+              var btn = form.querySelector("button[type=submit]");
+              var label = btn.textContent;
+              btn.disabled = true;
+              btn.textContent = "Envoi en cours...";
+              result.textContent = "";
+              result.className = "form-result";
+              try {
+                var res = await fetch(form.action, { method: "POST", body: new FormData(form) });
+                var json = await res.json();
+                if (json.success) {
+                  result.textContent = "Merci ! Votre message a bien été envoyé. 🥞";
+                  result.className = "form-result ok";
+                  form.reset();
+                } else {
+                  throw new Error("fail");
+                }
+              } catch (err) {
+                result.textContent = "Oups, une erreur est survenue. Réessayez, ou écrivez-nous directement par email.";
+                result.className = "form-result err";
+              }
+              btn.disabled = false;
+              btn.textContent = label;
+            });
+          })();
+        </script>
+      </div>
+
+      <!-- Carte Google Maps -->
+      <div class="map-wrap">
+        <iframe title="Plan d'accès" src={mapSrc} loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .contact-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 40px; align-items: start; }
+    .contact-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .contact-card { background: var(--white); border-radius: var(--radius); padding: 18px 20px; box-shadow: var(--shadow-soft); border: 1px solid rgba(30,61,52,0.06); }
+    .contact-card h3 { font-size: 1.1rem; margin-bottom: 6px; }
+    .contact-card p { font-size: 0.95rem; color: var(--muted); }
+    .contact-card:first-child { grid-column: 1 / -1; }
+
+    .contact-form { display: flex; flex-direction: column; gap: 12px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .contact-form input, .contact-form textarea {
+      font-family: var(--font-body); font-size: 1rem; padding: 13px 16px;
+      border: 1.5px solid rgba(30,61,52,0.16); border-radius: var(--radius); background: var(--white); color: var(--ink); width: 100%;
+      transition: border-color 0.2s;
+    }
+    .contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: var(--turquoise); }
+    .contact-form button { align-self: flex-start; margin-top: 4px; }
+    .form-result { margin-top: 6px; font-weight: 700; font-size: 0.98rem; }
+    .form-result.ok { color: var(--turquoise-dark); }
+    .form-result.err { color: #b5432f; }
+
+    .map-wrap { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow); border: 4px solid var(--white); min-height: 420px; }
+    .map-wrap iframe { width: 100%; height: 100%; min-height: 420px; border: 0; display: block; }
+
+    @media (max-width: 860px) {
+      .contact-grid { grid-template-columns: 1fr; }
+      .contact-cards { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</Base>

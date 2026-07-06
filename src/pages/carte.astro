@@ -1,0 +1,88 @@
+---
+import Base from "../layouts/Base.astro";
+import Waves from "../components/Waves.astro";
+import carte from "../data/carte.json";
+
+// Les 3 rubriques (ordre + textes fixes), les sections sont rangees par leur champ "group"
+const groups = [
+  { id: "sale", key: "Salé", label: "Le Salé", note: "Galettes de blé noir cuites sur billig" },
+  { id: "sucre", key: "Sucré", label: "Le Sucré", note: "Crêpes au froment & gaufres, garnies au choix" },
+  { id: "boissons", key: "Boissons", label: "Les Boissons", note: "" },
+];
+const sectionsOf = (key) => carte.sections.filter((s) => s.group === key);
+const shownGroups = groups.filter((g) => sectionsOf(g.key).length > 0);
+
+// Icône selon le type de section
+const icon = (title) => {
+  const t = title.toLowerCase();
+  if (t.includes("galette")) return "🥞";
+  if (t.includes("omelette")) return "🍳";
+  if (t.includes("formule")) return "⭐";
+  if (t.includes("crêpe") || t.includes("crepe")) return "🍫";
+  if (t.includes("gaufre")) return "🧇";
+  if (t.includes("chaud")) return "☕";
+  if (t.includes("bière") || t.includes("biere")) return "🍺";
+  if (t.includes("soft") || t.includes("sirop")) return "🥤";
+  if (t.includes("apéritif") || t.includes("aperitif") || t.includes("alcool")) return "🥃";
+  if (t.includes("kir") || t.includes("vin")) return "🍷";
+  return "🍽️";
+};
+---
+
+<Base title="La Carte" description="Galettes de blé noir, crêpes au froment et gaufres faites maison à la crêperie Le Comptoir de Nath, aux Ancizes-Comps.">
+  <section class="carte-hero">
+    <div class="container">
+      <img src="/logo.png" class="logo-badge" alt="Le Comptoir de Nath" />
+      <span class="section-eyebrow">Fait maison · Produits locaux</span>
+      <h1 class="section-title">Notre <span class="accent">Carte</span></h1>
+      <p>Galettes de blé noir cuites sur billig, crêpes au froment et gaufres gourmandes. Bonne dégustation&nbsp;!</p>
+      <div class="divider"><span class="tri">✦</span></div>
+    </div>
+    <Waves />
+  </section>
+
+  <nav class="carte-nav">
+    <div class="container">
+      <ul>
+        {shownGroups.map((g) => (
+          <li><a href={`#${g.id}`}>{g.label}</a></li>
+        ))}
+      </ul>
+    </div>
+  </nav>
+
+  {shownGroups.map((g, i) => (
+    <section class={`menu-group${i % 2 === 1 ? " alt" : ""}`} id={g.id}>
+      <div class="container">
+        <div class="menu-group-head">
+          <span class="section-eyebrow">La carte</span>
+          <h2 class="section-title">{g.label}</h2>
+          {g.note && <p class="note">{g.note}</p>}
+        </div>
+        <div class="menu-sections">
+          {sectionsOf(g.key).map((s) => (
+            <div class="menu-card">
+              <div class="menu-card-head">
+                <span class="menu-card-ico">{icon(s.title)}</span>
+                <div class="menu-card-titles">
+                  <h3>{s.title}</h3>
+                  {s.subtitle && <span class="sub">{s.subtitle}</span>}
+                </div>
+              </div>
+              {s.items.map((it) => (
+                <div class="menu-item">
+                  <div class="menu-item-top">
+                    <span class="menu-item-name">{it.name}</span>
+                    <span class="menu-item-dots"></span>
+                    <span class="menu-item-price">{it.price}<span class="cur">&nbsp;€</span></span>
+                  </div>
+                  {it.desc && <div class="menu-item-desc">{it.desc}</div>}
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  ))}
+</Base>

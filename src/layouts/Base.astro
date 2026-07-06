@@ -1,0 +1,83 @@
+---
+import "../styles/global.css";
+import site from "../data/site.json";
+
+const { title, description } = Astro.props;
+const pageTitle = title ? `${title} · ${site.name}` : `${site.name} · ${site.tagline}`;
+const desc = description || site.intro;
+const path = Astro.url.pathname.replace(/\/$/, "") || "/";
+
+const nav = [
+  { href: "/", label: "Accueil" },
+  { href: "/carte", label: "La Carte" },
+  { href: "/galerie", label: "Galerie" },
+];
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={desc} />
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Nunito+Sans:wght@400;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav">
+        <a href="/" class="nav-brand">
+          <img src="/logo.png" alt="Le Comptoir de Nath" />
+          <span>Le Comptoir de Nath</span>
+        </a>
+        <button class="nav-toggle" aria-label="Menu" id="navToggle">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links" id="navLinks">
+          {nav.map((n) => (
+            <li>
+              <a href={n.href} class={path === n.href ? "active" : ""}>{n.label}</a>
+            </li>
+          ))}
+          <li><a href="/contact" class="btn btn-primary">Nous trouver</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-media">
+        <img src="/footer.jpg" alt="Le Comptoir de Nath, crêperie bretonne à Les Ancizes-Comps · Fait maison et produits locaux" class="footer-img" loading="lazy" />
+        <a href="/admin/index.html" class="footer-door" title="Espace de gestion" aria-label="Espace de gestion (réservé)"></a>
+      </div>
+      <div class="footer-legal">
+        <a href="/mentions-legales">Mentions légales</a>
+      </div>
+    </footer>
+
+    <style>
+      /* Le pied de page est une image (le copyright y est deja inclus). */
+      .footer-media { position: relative; line-height: 0; font-size: 0; }
+      /* Bouton invisible pose sur la porte de la maison bretonne -> acces admin */
+      .footer-door { position: absolute; left: 79%; top: 47%; width: 9%; height: 22%; z-index: 2; }
+      .footer-legal { background: #189aa5; text-align: center; padding: 8px 16px; }
+      .footer-legal a { color: #fff; font-size: 0.72rem; text-decoration: underline; }
+      .footer-legal a:hover { opacity: 0.85; }
+    </style>
+
+    <script is:inline>
+      const t = document.getElementById("navToggle");
+      const l = document.getElementById("navLinks");
+      t && t.addEventListener("click", () => l.classList.toggle("open"));
+    </script>
+  </body>
+</html>

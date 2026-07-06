@@ -1,0 +1,16 @@
+{
+  "name": "le-comptoir-de-nath",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Site vitrine de la creperie bretonne Le Comptoir de Nath (Les Ancizes-Comps)",
+  "scripts": {
+    "dev": "astro dev",
+    "reviews": "node scripts/fetch-reviews.mjs",
+    "build": "node scripts/fetch-reviews.mjs && astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "^5.5.0",
+    "qrcode": "^1.5.4"
+  }
+}

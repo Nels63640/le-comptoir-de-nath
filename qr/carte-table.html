@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Carton de table — Le Comptoir de Nath</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,500&family=Nunito+Sans:wght@600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --cream: #f6f1e7;
+        --turquoise: #159a9c;
+        --ocean: #0e5a7a;
+        --gold: #c39a3d;
+        --forest: #1e3d34;
+      }
+      * { margin: 0; box-sizing: border-box; }
+      @page { size: A6; margin: 0; }
+      body { font-family: "Nunito Sans", -apple-system, sans-serif; color: var(--forest); }
+
+      .card {
+        width: 105mm; height: 148mm; background: var(--cream);
+        display: flex; flex-direction: column; align-items: center; text-align: center;
+        padding: 11mm 9mm 8mm; position: relative; overflow: hidden;
+      }
+      .card::before {
+        content: ""; position: absolute; top: 0; left: 0; right: 0; height: 5mm;
+        background: linear-gradient(90deg, var(--turquoise), var(--gold));
+      }
+      .logo {
+        width: 29mm; height: 29mm; border-radius: 50%; margin-top: 3mm;
+        box-shadow: 0 3mm 7mm -3mm rgba(14, 90, 122, 0.5);
+      }
+      h1 {
+        font-family: "Fraunces", Georgia, serif; font-weight: 600; font-size: 27pt;
+        color: var(--turquoise); margin-top: 5mm; line-height: 1;
+      }
+      h1 .g { color: var(--gold); font-style: italic; font-size: 17pt; display: block; margin-top: 1.5mm; }
+      .instr { font-weight: 800; font-size: 11.5pt; color: var(--forest); margin-top: 4mm; line-height: 1.35; }
+      .instr .light { font-weight: 700; color: var(--ocean); }
+      .qr-box {
+        background: #fff; border: 0.7mm solid var(--turquoise); border-radius: 4mm;
+        padding: 3.5mm; margin-top: 4mm; box-shadow: 0 2mm 6mm -2mm rgba(0, 0, 0, 0.2);
+      }
+      .qr-box img { display: block; width: 41mm; height: 41mm; }
+      .url { font-weight: 900; font-size: 11pt; color: var(--ocean); margin-top: 3.5mm; letter-spacing: 0.01em; }
+      .baseline {
+        font-family: "Fraunces", Georgia, serif; font-style: italic; font-size: 9.5pt;
+        color: var(--gold); margin-top: auto; padding-top: 3mm;
+      }
+
+      @media screen {
+        body { background: #c9d6d2; display: grid; place-items: center; min-height: 100vh; padding: 26px; }
+        .card { box-shadow: 0 22px 55px -22px rgba(0, 0, 0, 0.55); border-radius: 4mm; }
+        .note { position: fixed; top: 14px; left: 0; right: 0; text-align: center; color: #0e5a7a; font-weight: 800; }
+      }
+      @media print { .note { display: none; } }
+    </style>
+  </head>
+  <body>
+    <div class="note">Aperçu — appuie sur Ctrl+P pour imprimer ou enregistrer en PDF (format A6)</div>
+    <div class="card">
+      <img class="logo" src="./logo.png" alt="Le Comptoir de Nath" />
+      <h1>Notre Carte<span class="g">à découvrir</span></h1>
+      <div class="instr">📱 Scannez le QR code<br /><span class="light">galettes · crêpes · gaufres</span></div>
+      <div class="qr-box"><img src="./qr-carte.png" alt="QR code vers la carte" /></div>
+      <div class="url">lecomptoirdenath.com/carte</div>
+      <div class="baseline">Crêperie bretonne · Fait maison</div>
+    </div>
+  </body>
+</html>

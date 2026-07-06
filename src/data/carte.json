@@ -1,0 +1,527 @@
+{
+  "sections": [
+    {
+      "group": "Salé",
+      "title": "Galettes",
+      "subtitle": "Blé noir",
+      "items": [
+        {
+          "name": "La Simple",
+          "desc": "Jambon blanc, emmental ",
+          "price": "7,50"
+        },
+        {
+          "name": "La Complète",
+          "desc": "Œuf, Saint-Nectaire, jambon blanc",
+          "price": "9,00"
+        },
+        {
+          "name": "La 3 Fromages",
+          "desc": "St Nectaire, Bleu d'Auvergne, Cantal",
+          "price": "9,50"
+        },
+        {
+          "name": "L'Auvergnate",
+          "desc": "Pomme de terre, St Nectaire, tome fraîche",
+          "price": "9,50"
+        }
+      ]
+    },
+    {
+      "group": "Salé",
+      "title": "Omelettes",
+      "subtitle": "Cuites sur billig",
+      "items": [
+        {
+          "name": "Omelette Simple",
+          "desc": "Jambon blanc, emmental",
+          "price": "7,50"
+        },
+        {
+          "name": "Omelette 3 Fromages",
+          "desc": "St Nectaire, Bleu d'Auvergne, Cantal",
+          "price": "9,50"
+        },
+        {
+          "name": "Salade en supplément",
+          "desc": "",
+          "price": "2,00"
+        }
+      ]
+    },
+    {
+      "group": "Salé",
+      "title": "Paninis",
+      "subtitle": "",
+      "items": [
+        {
+          "name": "Jambon, tomate, mozzarella",
+          "desc": "",
+          "price": "6,00"
+        },
+        {
+          "name": "4 Fromages",
+          "desc": "",
+          "price": "6,00"
+        },
+        {
+          "name": "Burger",
+          "desc": "",
+          "price": "6,00"
+        }
+      ]
+    },
+    {
+      "group": "Salé",
+      "title": "Formule du Jour",
+      "subtitle": "Une proposition par jour",
+      "items": [
+        {
+          "name": "La Forestière",
+          "desc": "Oignon, persillade, lardon fumé, champignon de Paris, crème",
+          "price": "9,00"
+        },
+        {
+          "name": "La Norvégienne",
+          "desc": "Truite ou saumon fumé, poireaux, crème",
+          "price": "9,00"
+        },
+        {
+          "name": "La Poulette",
+          "desc": "Poulet ou dinde, oignon, persillade, poireaux, crème",
+          "price": "9,00"
+        },
+        {
+          "name": "La Robiquette",
+          "desc": "Saucisse fumée (morteau), oignon, emmental",
+          "price": "9,00"
+        }
+      ]
+    },
+    {
+      "group": "Sucré",
+      "title": "Crêpes au Froment",
+      "subtitle": "",
+      "items": [
+        {
+          "name": "Beurre-sucre",
+          "desc": "",
+          "price": "3,00"
+        },
+        {
+          "name": "Tout parfum",
+          "desc": "Au choix : sucre, pâte à tartiner, caramel maison, chocolat, noix de coco, myrtille, fruits rouges",
+          "price": "4,00"
+        },
+        {
+          "name": "La Normande",
+          "desc": "Pomme caramélisée",
+          "price": "5,50"
+        },
+        {
+          "name": "Banane Chocolat",
+          "desc": "Banane, chocolats, amandes",
+          "price": "5,50"
+        },
+        {
+          "name": "Kinder Bueno",
+          "desc": "",
+          "price": "5,00"
+        },
+        {
+          "name": "Oreo",
+          "desc": "",
+          "price": "5,00"
+        },
+        {
+          "name": "Crêpe + boule de glace",
+          "desc": "",
+          "price": "4,00"
+        }
+      ]
+    },
+    {
+      "group": "Sucré",
+      "title": "Gaufres",
+      "subtitle": "",
+      "items": [
+        {
+          "name": "Sucre glace",
+          "desc": "",
+          "price": "3,00"
+        },
+        {
+          "name": "Tous parfums",
+          "desc": "Au choix : sucre, pâte à tartiner, caramel maison, chocolat, noix de coco, myrtille, fruits rouges",
+          "price": "4,00"
+        },
+        {
+          "name": "Chantilly",
+          "desc": "En supplément",
+          "price": "1,00"
+        },
+        {
+          "name": "Boule de glace",
+          "desc": "En supplément",
+          "price": "1,00"
+        }
+      ]
+    },
+    {
+      "group": "Sucré",
+      "title": "Coupes Glacées",
+      "subtitle": "",
+      "items": [
+        {
+          "name": "Une boule",
+          "desc": "",
+          "price": "2,50"
+        },
+        {
+          "name": "Deux boules",
+          "desc": "",
+          "price": "5,00"
+        },
+        {
+          "name": "Trois boules",
+          "desc": "",
+          "price": "7,30"
+        },
+        {
+          "name": "Supplément crème fouettée",
+          "desc": "",
+          "price": "1,00"
+        }
+      ]
+    },
+    {
+      "group": "Sucré",
+      "title": "Coupes Gourmandes",
+      "subtitle": "",
+      "items": [
+        {
+          "name": "Choco liégeois",
+          "desc": "",
+          "price": "7,50"
+        },
+        {
+          "name": "Café liégeois",
+          "desc": "",
+          "price": "7,50"
+        },
+        {
+          "name": "Caramel liégeois",
+          "desc": "",
+          "price": "7,50"
+        },
+        {
+          "name": "Dame Blanche",
+          "desc": "",
+          "price": "7,50"
+        },
+        {
+          "name": "Fraise Melba",
+          "desc": "",
+          "price": "7,50"
+        },
+        {
+          "name": "Belle Hélène",
+          "desc": "",
+          "price": "7,50"
+        },
+        {
+          "name": "Coupe Verger",
+          "desc": "",
+          "price": "7,50"
+        },
+        {
+          "name": "Banana Split",
+          "desc": "",
+          "price": "8,00"
+        },
+        {
+          "name": "Coupe Colonel",
+          "desc": "",
+          "price": "8,50"
+        }
+      ]
+    },
+    {
+      "group": "Boissons",
+      "title": "Boissons Chaudes",
+      "subtitle": "",
+      "items": [
+        {
+          "name": "Café noir",
+          "desc": "",
+          "price": "1,50"
+        },
+        {
+          "name": "Café noisette",
+          "desc": "",
+          "price": "1,60"
+        },
+        {
+          "name": "Café allongé",
+          "desc": "",
+          "price": "1,60"
+        },
+        {
+          "name": "Déca",
+          "desc": "",
+          "price": "1,60"
+        },
+        {
+          "name": "Double café",
+          "desc": "",
+          "price": "3,00"
+        },
+        {
+          "name": "Double noisette",
+          "desc": "",
+          "price": "3,20"
+        },
+        {
+          "name": "Thé",
+          "desc": "",
+          "price": "2,50"
+        },
+        {
+          "name": "Chocolat chaud",
+          "desc": "",
+          "price": "2,50"
+        }
+      ]
+    },
+    {
+      "group": "Boissons",
+      "title": "Bières",
+      "subtitle": "Pression & bouteille",
+      "items": [
+        {
+          "name": "Demi pression 25cl",
+          "desc": "",
+          "price": "3,00"
+        },
+        {
+          "name": "Monaco",
+          "desc": "Grenadine, limonade, bière",
+          "price": "3,00"
+        },
+        {
+          "name": "Panaché",
+          "desc": "Limonade, bière",
+          "price": "3,00"
+        },
+        {
+          "name": "Tango",
+          "desc": "Grenadine, bière",
+          "price": "3,00"
+        },
+        {
+          "name": "Pinte 50cl",
+          "desc": "",
+          "price": "6,00"
+        },
+        {
+          "name": "Bock 17cl",
+          "desc": "",
+          "price": "2,00"
+        },
+        {
+          "name": "Leffe 33cl",
+          "desc": "Bouteille",
+          "price": "3,50"
+        },
+        {
+          "name": "Pelfort 33cl",
+          "desc": "Bouteille",
+          "price": "3,50"
+        },
+        {
+          "name": "Desperados 33cl",
+          "desc": "Bouteille",
+          "price": "3,50"
+        },
+        {
+          "name": "Bière sans alcool 25cl",
+          "desc": "",
+          "price": "3,00"
+        },
+        {
+          "name": "Bouteille d'eau",
+          "desc": "",
+          "price": "1,50"
+        }
+      ]
+    },
+    {
+      "group": "Boissons",
+      "title": "Softs & Sirops",
+      "subtitle": "",
+      "items": [
+        {
+          "name": "Sirop",
+          "desc": "",
+          "price": "1,50"
+        },
+        {
+          "name": "Diabolo",
+          "desc": "",
+          "price": "2,00"
+        },
+        {
+          "name": "Badoit ou Perrier",
+          "desc": "",
+          "price": "3,00"
+        },
+        {
+          "name": "Pago",
+          "desc": "Jus de fruits",
+          "price": "3,00"
+        }
+      ]
+    },
+    {
+      "group": "Boissons",
+      "title": "Apéritifs & Alcools",
+      "subtitle": "",
+      "items": [
+        {
+          "name": "Ricard",
+          "desc": "",
+          "price": "2,00"
+        },
+        {
+          "name": "Tomate",
+          "desc": "Ricard, grenadine",
+          "price": "2,00"
+        },
+        {
+          "name": "Perroquet",
+          "desc": "Ricard, menthe",
+          "price": "2,00"
+        },
+        {
+          "name": "Mauresque",
+          "desc": "Ricard, orgeat",
+          "price": "2,00"
+        },
+        {
+          "name": "Pétrole",
+          "desc": "Ricard, grenadine, menthe",
+          "price": "2,00"
+        },
+        {
+          "name": "Malibu",
+          "desc": "",
+          "price": "2,00"
+        },
+        {
+          "name": "Vodka",
+          "desc": "Coca ou sec",
+          "price": "3,00"
+        },
+        {
+          "name": "Whisky",
+          "desc": "Coca ou sec",
+          "price": "3,00"
+        },
+        {
+          "name": "Capitaine",
+          "desc": "Coca ou sec",
+          "price": "3,00"
+        },
+        {
+          "name": "Get 27",
+          "desc": "",
+          "price": "3,00"
+        },
+        {
+          "name": "Cognac",
+          "desc": "",
+          "price": "3,00"
+        },
+        {
+          "name": "Birlou",
+          "desc": "Nature",
+          "price": "3,00"
+        },
+        {
+          "name": "Eau de vie de poire",
+          "desc": "",
+          "price": "4,00"
+        },
+        {
+          "name": "Baileys",
+          "desc": "",
+          "price": "4,00"
+        }
+      ]
+    },
+    {
+      "group": "Boissons",
+      "title": "Kir & Vins",
+      "subtitle": "",
+      "items": [
+        {
+          "name": "Kir",
+          "desc": "Cassis, vin blanc",
+          "price": "1,50"
+        },
+        {
+          "name": "Pétillant",
+          "desc": "Café de Paris brut",
+          "price": "2,50"
+        },
+        {
+          "name": "Vin rouge / rosé / blanc",
+          "desc": "Verre supérieur",
+          "price": "1,50"
+        },
+        {
+          "name": "Vin ordinaire",
+          "desc": "Rosé",
+          "price": "1,00"
+        }
+      ]
+    },
+    {
+      "group": "Boissons",
+      "title": "Vins Cuits",
+      "subtitle": "5cl",
+      "items": [
+        {
+          "name": "Martini",
+          "desc": "",
+          "price": "3,00"
+        },
+        {
+          "name": "Salers",
+          "desc": "",
+          "price": "3,00"
+        },
+        {
+          "name": "Avèze",
+          "desc": "",
+          "price": "3,00"
+        },
+        {
+          "name": "Suze",
+          "desc": "",
+          "price": "3,00"
+        },
+        {
+          "name": "Porto",
+          "desc": "",
+          "price": "3,00"
+        },
+        {
+          "name": "Muscat",
+          "desc": "",
+          "price": "3,00"
+        }
+      ]
+    }
+  ]
+}

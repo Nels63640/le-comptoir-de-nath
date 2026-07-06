@@ -1,0 +1,276 @@
+---
+import Base from "../layouts/Base.astro";
+import Waves from "../components/Waves.astro";
+import site from "../data/site.json";
+import reviews from "../data/reviews.json";
+
+// Fiche Google Business (pour les boutons "avis"). Les avis sont recuperes par
+// scripts/fetch-reviews.mjs -> src/data/reviews.json (widget maison, sans tiers).
+const googleProfile = "https://share.google/wiv58FnpCXL0kIivQ";
+const reviewUrl = reviews.mapsUri || googleProfile;
+---
+
+<Base>
+  <!-- HERO -->
+  <section class="home-hero">
+    <div class="container hero-inner">
+      <h1 class="sr-only">Le Comptoir de Nath — Crêperie bretonne à Les Ancizes-Comps</h1>
+      <img src="/logo.png" class="hero-logo" alt="Le Comptoir de Nath — Crêperie bretonne, fait maison et produits locaux" />
+      <div class="hero-actions">
+        <a href="/carte" class="btn btn-primary">Voir la carte</a>
+        <a href="/contact" class="btn btn-outline">Nous trouver</a>
+      </div>
+    </div>
+    <Waves color="var(--cream)" />
+  </section>
+
+  <!-- NOTRE HISTOIRE -->
+  <section class="story">
+    <div class="container story-inner">
+      <div class="story-photo">
+        <img src="/images/crepe-1.jpg" alt="Galette bretonne faite maison au Comptoir de Nath" />
+      </div>
+      <div class="story-text">
+        <span class="section-eyebrow">Notre histoire</span>
+        <h2 class="section-title">Un <span class="accent">coup de cœur</span> breton</h2>
+        <div class="divider" style="justify-content:flex-start"><span class="tri">✦</span></div>
+        {site.story.split(/\n\n+/).map((p) => <p>{p}</p>)}
+      </div>
+    </div>
+  </section>
+
+  <!-- APERCU CARTE -->
+  <section class="teaser">
+    <div class="container">
+      <div class="menu-group-head">
+        <span class="section-eyebrow">À la carte</span>
+        <h2 class="section-title">Nos <span class="accent">gourmandises</span></h2>
+      </div>
+      <div class="teaser-grid">
+        <div class="teaser-card">
+          <div class="teaser-img" style="background-image:url('/images/galette-2.jpg')"></div>
+          <div class="teaser-body"><h3>Galettes</h3><p>De blé noir, garnies de produits locaux et cuites sur billig.</p></div>
+        </div>
+        <div class="teaser-card">
+          <div class="teaser-img" style="background-image:url('/images/crepe-3.jpg')"></div>
+          <div class="teaser-body"><h3>Crêpes</h3><p>Au froment, sucrées et gourmandes, pour tous les becs sucrés.</p></div>
+        </div>
+        <div class="teaser-card">
+          <div class="teaser-img" style="background-image:url('/images/gaufre-1.jpg')"></div>
+          <div class="teaser-body"><h3>Gaufres</h3><p>Croustillantes, tous parfums, chantilly ou boule de glace.</p></div>
+        </div>
+        <div class="teaser-card">
+          <div class="teaser-img" style="background-image:url('/images/glaces.jpg'),linear-gradient(160deg,#127a7c,#0e5a7a)"></div>
+          <div class="teaser-body"><h3>Glaces &amp; Coupes</h3><p>Coupes glacées, liégeois, Dame Blanche, banana split...</p></div>
+        </div>
+        <div class="teaser-card">
+          <div class="teaser-img" style="background-image:url('/images/paninis.jpg'),linear-gradient(160deg,#127a7c,#0e5a7a)"></div>
+          <div class="teaser-body"><h3>Paninis</h3><p>Jambon-mozzarella, 4 fromages ou burger, chauds et fondants.</p></div>
+        </div>
+      </div>
+      <div style="text-align:center; margin-top:36px">
+        <a href="/carte" class="btn btn-primary">Découvrir toute la carte</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPECIALITES -->
+  <section class="specialties">
+    <div class="container">
+      <div class="menu-group-head" style="text-align:center">
+        <span class="section-eyebrow">Les préférées de Nath</span>
+        <h2 class="section-title">Nos <span class="accent">spécialités</span></h2>
+        <div class="divider"><span class="tri">✦</span></div>
+      </div>
+      <div class="spec-grid">
+        {site.specialties.map((s) => (
+          <article class="spec-card">
+            {s.image ? <div class="spec-img" style={`background-image:url('${s.image}')`}></div> : null}
+            <div class="spec-body">
+              <span class="spec-badge">★ Spécialité</span>
+              <h3>{s.name}</h3>
+              {s.desc ? <p>{s.desc}</p> : null}
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- AVIS GOOGLE (widget maison, alimente par scripts/fetch-reviews.mjs -> src/data/reviews.json) -->
+  <section class="reviews">
+    <div class="container">
+      <div class="menu-group-head" style="text-align:center">
+        <span class="section-eyebrow">Avis Google</span>
+        <h2 class="section-title">Ils ont <span class="accent">goûté</span>, ils en parlent</h2>
+        <div class="divider"><span class="tri">✦</span></div>
+      </div>
+
+      {reviews.total > 0 ? (
+        <>
+          <div class="reviews-summary">
+            <svg class="g-logo" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
+              <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.76h3.56c2.08-1.92 3.28-4.74 3.28-8.09z" />
+              <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.56-2.76c-.98.66-2.23 1.06-3.72 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z" />
+              <path fill="#FBBC05" d="M5.84 14.09a6.6 6.6 0 0 1 0-4.18V7.07H2.18a11 11 0 0 0 0 9.86l3.66-2.84z" />
+              <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84C6.71 7.31 9.14 5.38 12 5.38z" />
+            </svg>
+            <span class="rsum-note">{reviews.rating.toFixed(1)}</span>
+            <span class="rsum-stars">{[1, 2, 3, 4, 5].map((s) => <span class={s <= Math.round(reviews.rating) ? "on" : ""}>★</span>)}</span>
+            <span class="rsum-count">{reviews.total} avis Google</span>
+          </div>
+
+          {reviews.reviews.length > 0 ? (
+            <div class="reviews-grid">
+              {reviews.reviews.map((r) => (
+                <article class="review-card">
+                  <div class="review-head">
+                    {r.photo ? (
+                      <img class="review-avatar" src={r.photo} alt={r.author} loading="lazy" referrerpolicy="no-referrer" />
+                    ) : (
+                      <span class="review-avatar review-avatar--letter">{r.author.charAt(0)}</span>
+                    )}
+                    <div class="review-meta">
+                      <p class="review-author">{r.author}</p>
+                      <p class="review-date">{r.relative}</p>
+                    </div>
+                  </div>
+                  <div class="review-stars">{[1, 2, 3, 4, 5].map((s) => <span class={s <= Math.round(r.rating) ? "on" : ""}>★</span>)}</div>
+                  {r.text ? <p class="review-text">{r.text}</p> : null}
+                </article>
+              ))}
+            </div>
+          ) : (
+            <p class="reviews-note">Merci à nos premiers clients&nbsp;! Les avis détaillés s'afficheront ici très bientôt.</p>
+          )}
+        </>
+      ) : (
+        <div class="reviews-cta">
+          <div class="stars">★★★★★</div>
+          <p>Soyez le premier à partager votre expérience&nbsp;! Votre avis fait chaud au cœur et aide la crêperie à se faire connaître.</p>
+        </div>
+      )}
+
+      <div class="reviews-actions">
+        <a href={reviewUrl} class="btn btn-primary" target="_blank" rel="noopener">⭐ Laisser un avis sur Google</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- INFOS PRATIQUES -->
+  <section class="practical">
+    <div class="container">
+      <ul class="practical-list">
+        {site.practical.map((p) => (
+          <li><span class="pract-icon">{p.icon}</span>{p.label}</li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- INFOS -->
+  <section class="infos">
+    <div class="container infos-inner">
+      <div class="info-block">
+        <h3>📍 Où nous trouver</h3>
+        <p>{site.address}<br />{site.postcode} {site.city}</p>
+        <a class="link-gold" href={`https://www.google.com/maps?q=${encodeURIComponent(`${site.address}, ${site.postcode} ${site.city}`)}`} target="_blank" rel="noopener">Ouvrir dans Google Maps →</a>
+      </div>
+      <div class="info-block">
+        <h3>🕐 Horaires</h3>
+        <p>{site.hoursNote}</p>
+      </div>
+      <div class="info-block">
+        <h3>✉️ Contact</h3>
+        {site.phone ? <p>☎️ <a href={`tel:${site.phone.replace(/\s/g, "")}`}>{site.phone}</a></p> : null}
+        <p><a href={`mailto:${site.email}`}>{site.email}</a></p>
+        <a class="link-gold" href="/contact">Formulaire de contact →</a>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .home-hero { position: relative; text-align: center; padding: 82px 0 100px; background: linear-gradient(160deg, var(--turquoise) 0%, var(--ocean) 100%); color: var(--white); }
+    .home-hero .section-eyebrow { color: #ffe1a3; }
+    .hero-logo { width: clamp(240px, 44vw, 430px); height: auto; border-radius: 50%; margin: 0 auto 34px; box-shadow: 0 26px 64px -18px rgba(0,0,0,0.55); background: var(--white); border: 6px solid rgba(255,255,255,0.5); }
+    .hero-title { font-size: clamp(2.8rem, 7vw, 4.6rem); line-height: 1.02; color: var(--white); }
+    .hero-title .accent { color: #ffd98a; font-style: italic; }
+    .hero-sub { font-family: var(--font-display); font-style: italic; font-size: 1.3rem; color: rgba(255,255,255,0.92); margin-top: 14px; }
+    .hero-actions { display: flex; gap: 14px; justify-content: center; margin-top: 30px; flex-wrap: wrap; }
+    .home-hero .btn-primary { background: var(--white); color: var(--ocean); box-shadow: 0 10px 24px -8px rgba(0,0,0,0.45); }
+    .home-hero .btn-primary:hover { background: #fff; color: var(--turquoise-dark); transform: translateY(-2px); }
+    .home-hero .btn-outline { border-color: rgba(255,255,255,0.75); color: var(--white); }
+    .home-hero .btn-outline:hover { background: rgba(255,255,255,0.16); color: var(--white); border-color: #fff; }
+    .home-hero .wave { position: absolute; bottom: -1px; left: 0; }
+
+    .story { padding: 80px 0; }
+    .story-inner { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 50px; align-items: start; }
+    .story-photo img { aspect-ratio: 4/5; width: 100%; object-fit: cover; border-radius: var(--radius-lg); box-shadow: var(--shadow); border: 5px solid var(--white); position: sticky; top: 90px; }
+    .story-text p { margin-bottom: 14px; color: #4d453c; line-height: 1.75; }
+    .story-text p:last-child { margin-bottom: 0; }
+
+    .specialties { padding: 70px 0 78px; }
+    .spec-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 34px; }
+    .spec-card { position: relative; background: var(--white); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-soft); border: 1px solid rgba(166,127,46,0.18); text-align: center; transition: transform 0.3s var(--ease); }
+    .spec-card:hover { transform: translateY(-6px); }
+    .spec-img { aspect-ratio: 4/3; background-size: cover; background-position: center; }
+    .spec-body { padding: 24px 26px 28px; }
+    .spec-badge { display: inline-block; background: var(--gold); color: #fff; font-size: 0.72rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 13px; border-radius: 100px; margin-bottom: 14px; }
+    .spec-card h3 { font-size: 1.4rem; color: var(--turquoise-dark); margin-bottom: 8px; }
+    .spec-card p { color: var(--muted); font-size: 0.95rem; line-height: 1.5; }
+
+    .practical { padding: 26px 0 6px; }
+    .practical-list { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; padding: 0; }
+    .practical-list li { display: flex; align-items: center; gap: 8px; background: var(--foam); border: 1px solid rgba(18,122,124,0.16); border-radius: 100px; padding: 10px 20px; font-weight: 700; color: var(--ink); }
+    .pract-icon { font-size: 1.15rem; }
+
+    .teaser { padding: 66px 0 80px; background: var(--foam); }
+    .teaser-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 36px; }
+    .teaser-card { background: var(--white); border-radius: var(--radius-lg); overflow: hidden; text-align: center; box-shadow: var(--shadow-soft); border: 1px solid rgba(30,61,52,0.06); transition: transform 0.3s var(--ease); }
+    .teaser-card:hover { transform: translateY(-6px); }
+    .teaser-img { aspect-ratio: 16/10; background-size: cover; background-position: center; }
+    .teaser-body { padding: 22px 24px 28px; }
+    .teaser-card h3 { font-size: 1.5rem; color: var(--turquoise-dark); margin-bottom: 8px; }
+    .teaser-card p { color: var(--muted); font-size: 0.96rem; }
+
+    .reviews { padding: 72px 0 80px; }
+    .reviews .menu-group-head { margin-bottom: 26px; }
+    .reviews-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 34px; }
+
+    .reviews-summary { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 32px; }
+    .reviews-summary .g-logo { flex: 0 0 auto; }
+    .rsum-note { font-family: var(--font-display); font-size: 1.7rem; font-weight: 700; color: var(--ink); }
+    .rsum-stars span { color: #d9d2c4; font-size: 1.25rem; }
+    .rsum-stars span.on { color: var(--gold); }
+    .rsum-count { color: var(--muted); font-size: 0.95rem; }
+
+    .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 340px)); gap: 22px; justify-content: center; }
+    .review-card { background: var(--white); border-radius: var(--radius-lg); padding: 24px 24px 26px; box-shadow: var(--shadow-soft); border: 1px solid rgba(30,61,52,0.06); text-align: left; }
+    .review-head { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+    .review-avatar { width: 46px; height: 46px; border-radius: 50%; object-fit: cover; flex: 0 0 auto; }
+    .review-avatar--letter { display: flex; align-items: center; justify-content: center; background: var(--turquoise); color: #fff; font-weight: 800; font-size: 1.2rem; text-transform: uppercase; }
+    .review-meta { min-width: 0; }
+    .review-author { font-weight: 800; color: var(--ink); line-height: 1.2; }
+    .review-date { font-size: 0.85rem; color: var(--muted); }
+    .review-stars { margin-bottom: 10px; }
+    .review-stars span { color: #d9d2c4; font-size: 1.05rem; }
+    .review-stars span.on { color: var(--gold); }
+    .review-text { color: #4d453c; font-size: 0.97rem; line-height: 1.6; }
+
+    .reviews-note { text-align: center; color: var(--muted); font-style: italic; margin-top: 6px; }
+    .reviews-cta { max-width: 560px; margin: 0 auto; text-align: center; }
+    .reviews-cta .stars { color: var(--gold); font-size: 1.5rem; letter-spacing: 4px; margin-bottom: 8px; }
+    .reviews-cta p { color: var(--muted); }
+
+    .infos { padding: 60px 0; border-top: 1px solid rgba(30,61,52,0.08); }
+    .infos-inner { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+    .info-block h3 { font-size: 1.3rem; margin-bottom: 10px; }
+    .link-gold { display: inline-block; margin-top: 8px; color: var(--gold-dark); font-weight: 800; }
+
+    @media (max-width: 860px) {
+      .story-inner, .teaser-grid, .spec-grid, .infos-inner { grid-template-columns: 1fr; }
+      .story-inner { gap: 30px; }
+      .story-photo img { position: static; aspect-ratio: 4/3; }
+    }
+  </style>
+</Base>

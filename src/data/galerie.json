@@ -1,0 +1,36 @@
+{
+  "photos": [
+    {
+      "src": "/images/galette-1.jpg",
+      "alt": "Galette bretonne garnie"
+    },
+    {
+      "src": "/images/crepe-1.jpg",
+      "alt": "Crêpe aux fruits rouges et chantilly"
+    },
+    {
+      "src": "/images/galette-2.jpg",
+      "alt": "Galette de blé noir"
+    },
+    {
+      "src": "/images/gaufre-1.jpg",
+      "alt": "Gaufre gourmande"
+    },
+    {
+      "src": "/images/crepe-2.jpg",
+      "alt": "Crêpe sucrée"
+    },
+    {
+      "src": "/images/galette-3.jpg",
+      "alt": "Galette complète"
+    },
+    {
+      "src": "/images/gaufre-2.jpg",
+      "alt": "Gaufre au sucre glace"
+    },
+    {
+      "src": "/images/crepe-3.jpg",
+      "alt": "Crêpe au chocolat"
+    }
+  ]
+}

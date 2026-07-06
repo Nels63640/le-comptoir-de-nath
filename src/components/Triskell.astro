@@ -1,0 +1,16 @@
+---
+// Triskell (triskele) : symbole celte breton. Se dimensionne lui-meme (taille + couleur en props).
+const { size = "10mm", color = "#a67f2e" } = Astro.props;
+---
+<svg
+  viewBox="0 0 100 100"
+  aria-hidden="true"
+  style={`width:${size};height:${size};min-width:${size};flex:0 0 auto;display:inline-block;vertical-align:middle;color:${color}`}
+>
+  <g fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round">
+    <path d="M50 50 C 50 32, 38 22, 26 27 C 16 31, 17 43, 27 44" />
+    <path d="M50 50 C 50 32, 38 22, 26 27 C 16 31, 17 43, 27 44" transform="rotate(120 50 50)" />
+    <path d="M50 50 C 50 32, 38 22, 26 27 C 16 31, 17 43, 27 44" transform="rotate(240 50 50)" />
+    <circle cx="50" cy="50" r="5" fill="currentColor" stroke="none" />
+  </g>
+</svg>

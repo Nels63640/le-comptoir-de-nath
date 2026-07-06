@@ -1,0 +1,217 @@
+---
+import carte from "../data/carte.json";
+import site from "../data/site.json";
+import Triskell from "../components/Triskell.astro";
+
+const groups = [
+  { key: "Salé", label: "Salé" },
+  { key: "Sucré", label: "Sucré" },
+  { key: "Boissons", label: "Boissons" },
+];
+const sectionsOf = (k) => carte.sections.filter((s) => s.group === k);
+
+// Répartit les sections d'un groupe en "feuilles" A4 (estimation par nombre de lignes),
+// sans jamais couper une section. Une section = titre + ses produits.
+function paginate(sections, maxLines) {
+  const pages = [];
+  let cur = [];
+  let count = 0;
+  for (const s of sections) {
+    const n = s.items.length + 2;
+    if (count + n > maxLines && cur.length) {
+      pages.push(cur);
+      cur = [];
+      count = 0;
+    }
+    cur.push(s);
+    count += n;
+  }
+  if (cur.length) pages.push(cur);
+  return pages;
+}
+
+// Liste des feuilles à imprimer (une par groupe, un groupe volumineux = plusieurs feuilles)
+const sheets = [];
+for (const g of groups) {
+  const gs = sectionsOf(g.key);
+  if (!gs.length) continue;
+  paginate(gs, 42).forEach((secs, i) => sheets.push({ group: g.label, suite: i > 0, sections: secs }));
+}
+const lastIndex = sheets.length - 1;
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Carte à imprimer — Le Comptoir de Nath</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Nunito+Sans:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --turquoise: #127a7c;
+        --ocean: #0e5a7a;
+        --gold: #a67f2e;
+        --gold-light: #c39a3d;
+        --ink: #2b241d;
+        --muted: #6b6257;
+        --cream: #faf6ec;
+      }
+      * { margin: 0; box-sizing: border-box; }
+      body { font-family: "Nunito Sans", -apple-system, sans-serif; color: var(--ink); background: #d9d9d9; }
+
+      .toolbar {
+        position: fixed; top: 0; left: 0; right: 0; z-index: 10;
+        background: var(--ocean); color: #fff; padding: 10px; text-align: center; font-weight: 700; font-size: 14px;
+      }
+      .toolbar button {
+        background: #fff; color: var(--ocean); border: 0; padding: 8px 20px; border-radius: 100px;
+        font-weight: 800; cursor: pointer; margin-right: 12px; font-size: 14px;
+      }
+
+      /* Une feuille = une page A4, avec son cadre doré */
+      .sheet {
+        background: var(--cream);
+        border: 3px double var(--gold);
+        width: 210mm; min-height: 297mm;
+        margin: 58px auto 0;
+        padding: 14mm 16mm;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.28);
+        display: flex; flex-direction: column; justify-content: center;
+      }
+      .sheet + .sheet { margin-top: 26px; }
+
+      /* En-tête (feuille 1 uniquement) */
+      .mhead { text-align: center; padding-bottom: 5mm; margin-bottom: 6mm; border-bottom: 2px double var(--gold); }
+      .mlogo { width: 27mm; height: 27mm; border-radius: 50%; }
+      .mhead h1 { font-family: "Fraunces", Georgia, serif; font-weight: 600; font-size: 28pt; color: var(--turquoise); margin-top: 2mm; }
+      .mhead .tag { font-family: "Fraunces", Georgia, serif; font-style: italic; font-size: 13pt; color: var(--ocean); }
+      .mhead .tri-head { margin: 2mm 0 0.5mm; }
+      .mhead .fl { font-size: 8.5pt; color: var(--gold); letter-spacing: 0.22em; text-transform: uppercase; font-weight: 700; }
+
+      /* Titre de groupe */
+      .grp-title { text-align: center; margin: 2mm 0 7mm; position: relative; }
+      .grp-title::before { content: ""; position: absolute; top: 50%; left: 5%; right: 5%; height: 1.4px; background: var(--gold); }
+      .grp-title span {
+        display: inline-flex; align-items: center; gap: 4mm;
+        font-family: "Fraunces", Georgia, serif; font-weight: 600; font-size: 19pt; color: var(--turquoise);
+        text-transform: uppercase; letter-spacing: 0.22em; background: var(--cream); padding: 0 6mm; position: relative;
+      }
+
+      /* Colonnes */
+      .secs { columns: 2; column-gap: 13mm; column-rule: 1px solid rgba(166, 127, 46, 0.3); }
+      .sec { break-inside: avoid; margin-bottom: 6mm; }
+      .sec h3 { font-family: "Fraunces", Georgia, serif; font-weight: 600; font-size: 13.5pt; color: var(--ocean); }
+      .sec h3 em { font-family: "Nunito Sans", sans-serif; font-size: 8.5pt; font-style: italic; color: var(--muted); font-weight: 600; }
+      .sec h3::after { content: ""; display: block; height: 1px; margin: 1.5mm 0 2.5mm; background: linear-gradient(90deg, var(--gold-light), transparent); }
+
+      .item { margin-bottom: 2.4mm; }
+      .item-line { display: flex; align-items: baseline; }
+      .iname { font-weight: 800; font-size: 10.5pt; }
+      .idots { flex: 1; border-bottom: 1px dotted #bcae90; margin: 0 1.5mm; transform: translateY(-2px); }
+      .iprice { font-family: "Fraunces", Georgia, serif; font-weight: 600; font-size: 11pt; color: var(--gold); white-space: nowrap; }
+      .idesc { font-size: 8pt; color: var(--muted); font-style: italic; margin-top: 0.3mm; line-height: 1.3; }
+
+      /* Pied (dernière feuille) : poussé en bas grâce au flex */
+      .mfoot { text-align: center; margin-top: 8mm; padding-top: 5mm; }
+      .mfoot p { font-family: "Fraunces", Georgia, serif; font-style: italic; font-size: 9pt; color: var(--muted); margin-top: 1.5mm; }
+
+      @media print {
+        @page { size: A4; margin: 9mm; }
+        body { background: #fff; }
+        .toolbar { display: none; }
+        .sheet {
+          width: auto; min-height: 273mm; margin: 0; box-shadow: none;
+          break-before: page; break-inside: avoid;
+        }
+        .sheet:first-of-type, .sheet:first-child { break-before: auto; }
+        * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="toolbar">
+      <button onclick="window.print()">🖨️ Imprimer</button>
+      <button id="dlPdf" type="button">⬇️ Télécharger en PDF</button>
+      <span>format A4</span>
+    </div>
+
+    <div id="print-root">
+      {sheets.map((sh, idx) => (
+        <div class="sheet">
+          {idx === 0 && (
+            <header class="mhead">
+              <img class="mlogo" src="/logo.png" alt="Le Comptoir de Nath" />
+              <h1>Le Comptoir de Nath</h1>
+              <p class="tag">Crêperie Bretonne</p>
+              <Triskell size="10mm" color="#a67f2e" class="tri-head" />
+              <p class="fl">Fait maison &middot; Produits locaux</p>
+            </header>
+          )}
+
+          <h2 class="grp-title">
+            <span><Triskell size="6mm" color="#c39a3d" />{sh.group}{sh.suite ? " (suite)" : ""}<Triskell size="6mm" color="#c39a3d" /></span>
+          </h2>
+
+          <div class="secs">
+            {sh.sections.map((s) => (
+              <div class="sec">
+                <h3>{s.title}{s.subtitle ? <em> — {s.subtitle}</em> : null}</h3>
+                {s.items.map((it) => (
+                  <div class="item">
+                    <div class="item-line">
+                      <span class="iname">{it.name}</span>
+                      <span class="idots"></span>
+                      <span class="iprice">{it.price} €</span>
+                    </div>
+                    {it.desc ? <div class="idesc">{it.desc}</div> : null}
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+
+          {idx === lastIndex && (
+            <footer class="mfoot">
+              <Triskell size="7mm" color="#a67f2e" />
+              <p>{site.address}, {site.postcode} {site.city}{site.phone ? ` · ${site.phone}` : ""} · lecomptoirdenath.com</p>
+            </footer>
+          )}
+        </div>
+      ))}
+    </div>
+
+    <script is:inline src="https://cdn.jsdelivr.net/npm/html2pdf.js@0.10.2/dist/html2pdf.bundle.min.js"></script>
+    <script is:inline>
+      function downloadPDF() {
+        var btn = document.getElementById("dlPdf");
+        var tb = document.querySelector(".toolbar");
+        if (btn) { btn.disabled = true; btn.textContent = "⏳ Génération..."; }
+        if (tb) tb.style.display = "none";
+        var ready = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
+        ready.then(function () {
+          return html2pdf().set({
+            margin: 9,
+            filename: "Carte-Le-Comptoir-de-Nath.pdf",
+            image: { type: "png" },
+            html2canvas: { scale: 2, useCORS: true, backgroundColor: "#faf6ec" },
+            jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
+            pagebreak: { mode: ["css", "legacy"], avoid: [".sec", ".sheet"] },
+          }).from(document.getElementById("print-root")).save();
+        }).then(function () {
+          if (tb) tb.style.display = "";
+          if (btn) { btn.disabled = false; btn.textContent = "⬇️ Télécharger en PDF"; }
+        });
+      }
+      document.getElementById("dlPdf").addEventListener("click", downloadPDF);
+      if (new URLSearchParams(location.search).get("dl") === "1") {
+        window.addEventListener("load", function () { setTimeout(downloadPDF, 900); });
+      }
+    </script>
+  </body>
+</html>

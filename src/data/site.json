@@ -1,0 +1,86 @@
+{
+  "hoursNote": "Ouvert tous les jours, 7h - 22h",
+  "baseline": "Fait maison · Produits locaux",
+  "city": "Les Ancizes-Comps",
+  "name": "Le Comptoir de Nath",
+  "intro": "Aux Ancizes-Comps, notre crêperie vous accueille pour déguster galettes de blé noir, crêpes au froment et gaufres, préparées maison avec des produits locaux. Une escale bretonne au cœur de l'Auvergne.",
+  "postcode": "63770",
+  "social": {
+    "facebook": "",
+    "instagram": ""
+  },
+  "phone": "04 73 86 81 13",
+  "tagline": "Crêperie Bretonne",
+  "hours": [
+    {
+      "day": "Lundi",
+      "value": "7h - 22h"
+    },
+    {
+      "day": "Mardi",
+      "value": "7h - 22h"
+    },
+    {
+      "day": "Mercredi",
+      "value": "7h - 22h"
+    },
+    {
+      "day": "Jeudi",
+      "value": "7h - 22h"
+    },
+    {
+      "day": "Vendredi",
+      "value": "7h - 22h"
+    },
+    {
+      "day": "Samedi",
+      "value": "7h - 22h"
+    },
+    {
+      "day": "Dimanche",
+      "value": "7h - 22h"
+    }
+  ],
+  "address": "23 Avenue du Plan d'Eau",
+  "story": "Je ne connaissais pas du tout la Bretagne avant d'y partir en vacances. Pendant quinze jours, j'ai parcouru toute la côte, et ce fut un véritable coup de cœur : la beauté des paysages, l'authenticité de la région, l'accueil de ses habitants et, bien sûr, ses délicieuses crêpes.\n\nCette découverte a fait naître en moi une véritable passion pour la Bretagne. C'est elle qui m'a inspirée à créer une crêperie au sein de mon bar, avec l'envie de faire découvrir à mon tour les saveurs bretonnes et de partager un peu de cette région qui m'a tant marquée. À travers chaque crêpe, je souhaite transmettre un morceau de ce coup de cœur.\n\nPour me démarquer, j'ai choisi de proposer de véritables crêpes bretonnes faites maison. Afin d'offrir un produit authentique et de qualité, je suis partie me former en Bretagne auprès de professionnels.\n\nMon objectif : faire voyager mes clients au cœur de la Bretagne, tout en restant en Auvergne. À travers mes recettes, mon savoir-faire et l'ambiance de ma crêperie, le temps d'un repas, ils parcourent les côtes bretonnes.",
+  "practical": [
+    {
+      "icon": "🥡",
+      "label": "À emporter"
+    },
+    {
+      "icon": "💳",
+      "label": "Carte bancaire & espèces"
+    },
+    {
+      "icon": "☀️",
+      "label": "Terrasse"
+    },
+    {
+      "icon": "🅿️",
+      "label": "Parking à proximité"
+    },
+    {
+      "icon": "🍀",
+      "label": "Point FDJ"
+    }
+  ],
+  "specialties": [
+    {
+      "name": "Galette 3 fromages",
+      "desc": "Un trio de fromages fondants sur galette de blé noir. Saint-Nectaire Bleu d'auvergne Cantal",
+      "image": "/images/galette-3-fromages.jpg"
+    },
+    {
+      "name": "Galette truffade",
+      "desc": "Un clin d'œil à l'Auvergne : pommes de terre et tomme fraîche et cantal, sur galette bretonne.",
+      "image": "/images/galette-truffade.jpg"
+    },
+    {
+      "name": "Galette complète",
+      "desc": "L'incontournable : œuf, jambon, fromage.",
+      "image": "/images/galette-complete.jpg"
+    }
+  ],
+  "email": "contact@lecomptoirdenath.com"
+}

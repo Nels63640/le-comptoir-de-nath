@@ -1,0 +1,18 @@
+---
+// Vagues animees (effet mer) a placer en bas d'une section bleue.
+// color = couleur de la section qui suit (pour la transition).
+const { color = "var(--cream)" } = Astro.props;
+---
+<div class="waves-divider" aria-hidden="true">
+  <svg class="waves-svg" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+    <defs>
+      <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+    </defs>
+    <g class="waves-parallax">
+      <use href="#gentle-wave" x="48" y="0" class="wave-l1"></use>
+      <use href="#gentle-wave" x="48" y="3" class="wave-l2"></use>
+      <use href="#gentle-wave" x="48" y="5" class="wave-l3"></use>
+      <use href="#gentle-wave" x="48" y="7" class="wave-l4" style={`fill:${color}`}></use>
+    </g>
+  </svg>
+</div>

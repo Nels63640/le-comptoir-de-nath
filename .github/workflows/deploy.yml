@@ -1,0 +1,43 @@
+name: Déployer le site sur GitHub Pages
+
+on:
+  # À chaque changement sur la branche principale (y compris les modifs de Nath via le panneau)
+  push:
+    branches: [main]
+  # Rafraîchissement automatique des avis Google : tous les jours à 05h00 UTC (~07h en France)
+  schedule:
+    - cron: "0 5 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v4
+      - name: Construire le site Astro
+        uses: withastro/action@v3
+        env:
+          # Secrets a definir dans GitHub : Settings > Secrets and variables > Actions
+          GOOGLE_PLACES_API_KEY: ${{ secrets.GOOGLE_PLACES_API_KEY }}
+          GOOGLE_PLACE_ID: ${{ secrets.GOOGLE_PLACE_ID }}
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publier sur GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

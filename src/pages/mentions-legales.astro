@@ -1,0 +1,63 @@
+---
+import Base from "../layouts/Base.astro";
+import site from "../data/site.json";
+---
+
+<Base title="Mentions légales" description="Mentions légales du site Le Comptoir de Nath, crêperie bretonne aux Ancizes-Comps.">
+  <section class="legal">
+    <div class="container legal-inner">
+      <h1 class="section-title">Mentions <span class="accent">légales</span></h1>
+      <div class="divider" style="justify-content:flex-start"><span class="tri">✦</span></div>
+
+      <h2>Éditeur du site</h2>
+      <p>
+        <strong>{site.name}</strong><br />
+        SARL (société à responsabilité limitée), représentée par sa gérante Nathalie LAVAL<br />
+        {site.address}, {site.postcode} {site.city}<br />
+        SIRET : 105 817 035 00014<br />
+        TVA intracommunautaire : [à compléter]<br />
+        Téléphone : {site.phone}<br />
+        Email : <a href={`mailto:${site.email}`}>{site.email}</a>
+      </p>
+
+      <h2>Directrice de la publication</h2>
+      <p>Nathalie LAVAL, gérante.</p>
+
+      <h2>Hébergement</h2>
+      <p>
+        Ce site est hébergé par <strong>GitHub, Inc.</strong><br />
+        88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis<br />
+        <a href="https://github.com" target="_blank" rel="noopener">github.com</a>
+      </p>
+
+      <h2>Propriété intellectuelle</h2>
+      <p>
+        L'ensemble des contenus de ce site (textes, logo, mise en page) est la propriété de {site.name}, sauf mention
+        contraire. Toute reproduction ou utilisation sans autorisation préalable est interdite. Certaines photos
+        d'illustration proviennent de la banque d'images libre de droits Pexels.
+      </p>
+
+      <h2>Données personnelles</h2>
+      <p>
+        Les informations saisies dans le formulaire de contact (nom, email, téléphone, message) sont utilisées
+        uniquement pour répondre à votre demande. Elles ne sont ni revendues ni cédées à des tiers. Conformément au
+        Règlement Général sur la Protection des Données (RGPD), vous disposez d'un droit d'accès, de rectification et de
+        suppression de vos données en écrivant à <a href={`mailto:${site.email}`}>{site.email}</a>.
+      </p>
+
+      <h2>Cookies</h2>
+      <p>
+        Ce site n'utilise pas de cookies de suivi publicitaire. La carte Google Maps intégrée sur la page de contact
+        peut déposer des cookies tiers émis par Google.
+      </p>
+    </div>
+  </section>
+
+  <style>
+    .legal { padding: 60px 0 80px; }
+    .legal-inner { max-width: 760px; }
+    .legal h2 { font-family: var(--font-display); font-size: 1.4rem; color: var(--turquoise-dark); margin: 30px 0 8px; }
+    .legal p { color: #4d453c; line-height: 1.7; }
+    .legal a { color: var(--gold-dark); font-weight: 700; }
+  </style>
+</Base>
