@@ -7,7 +7,7 @@ local_backend: true
 
 backend:
   name: github
-  repo: NeoStelod/le-comptoir-de-nath
+  repo: Nels63640/le-comptoir-de-nath
   branch: main
 
 media_folder: "public/images"
