@@ -361,14 +361,44 @@
       "subtitle": "",
       "items": [
         {
-          "name": "Sirop",
+          "name": "Sirop (petit)",
           "desc": "",
           "price": "1,50"
         },
         {
-          "name": "Diabolo",
+          "name": "Sirop (grand)",
           "desc": "",
           "price": "2,00"
+        },
+        {
+          "name": "Diabolo (petit)",
+          "desc": "",
+          "price": "1,50"
+        },
+        {
+          "name": "Diabolo (grand)",
+          "desc": "",
+          "price": "2,00"
+        },
+        {
+          "name": "Coca",
+          "desc": "",
+          "price": "3,00"
+        },
+        {
+          "name": "Schweppes",
+          "desc": "",
+          "price": "3,00"
+        },
+        {
+          "name": "Orangina",
+          "desc": "",
+          "price": "3,00"
+        },
+        {
+          "name": "Lipton pêche",
+          "desc": "",
+          "price": "3,00"
         },
         {
           "name": "Badoit ou Perrier",
@@ -415,7 +445,7 @@
         {
           "name": "Malibu",
           "desc": "",
-          "price": "2,00"
+          "price": "3,00"
         },
         {
           "name": "Vodka",
@@ -435,7 +465,7 @@
         {
           "name": "Get 27",
           "desc": "",
-          "price": "3,00"
+          "price": "2,00"
         },
         {
           "name": "Cognac",
