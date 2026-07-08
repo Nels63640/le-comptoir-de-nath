@@ -304,13 +304,13 @@
           "price": "3,00"
         },
         {
-          "name": "Monaco",
-          "desc": "Grenadine, limonade, bière",
+          "name": "Panaché",
+          "desc": "Limonade, bière",
           "price": "3,00"
         },
         {
-          "name": "Panaché",
-          "desc": "Limonade, bière",
+          "name": "Monaco",
+          "desc": "Grenadine, limonade, bière",
           "price": "3,00"
         },
         {
@@ -352,6 +352,11 @@
           "name": "Bouteille d'eau",
           "desc": "",
           "price": "1,50"
+        },
+        {
+          "name": "Bière Bougnat (blonde)",
+          "desc": "Bière locale et artisanale",
+          "price": "3€"
         }
       ]
     },
