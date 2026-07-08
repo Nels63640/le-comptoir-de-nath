@@ -7,6 +7,35 @@ const pageTitle = title ? `${title} · ${site.name}` : `${site.name} · ${site.t
 const desc = description || site.intro;
 const path = Astro.url.pathname.replace(/\/$/, "") || "/";
 
+// SEO : URL canonique, image de partage, et donnees structurees (fiche Restaurant pour Google)
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const ogImage = new URL("logo.png", Astro.site).href;
+
+const dayMap = { Lundi: "Monday", Mardi: "Tuesday", Mercredi: "Wednesday", Jeudi: "Thursday", Vendredi: "Friday", Samedi: "Saturday", Dimanche: "Sunday" };
+const pad2 = (n) => String(n).padStart(2, "0");
+const openingHoursSpec = (site.hours || [])
+  .map((h) => {
+    const m = (h.value || "").match(/(\d{1,2})\s*h\s*(\d{0,2}).*?(\d{1,2})\s*h\s*(\d{0,2})/);
+    if (!m || !dayMap[h.day]) return null;
+    return { "@type": "OpeningHoursSpecification", dayOfWeek: dayMap[h.day], opens: `${pad2(m[1])}:${pad2(m[2] || 0)}`, closes: `${pad2(m[3])}:${pad2(m[4] || 0)}` };
+  })
+  .filter(Boolean);
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  name: site.name,
+  description: site.intro,
+  servesCuisine: "Crêperie bretonne",
+  url: Astro.site?.href,
+  image: ogImage,
+  email: site.email,
+  priceRange: "€",
+  address: { "@type": "PostalAddress", streetAddress: site.address, postalCode: site.postcode, addressLocality: site.city, addressCountry: "FR" },
+  ...(site.phone ? { telephone: "+33" + site.phone.replace(/\D/g, "").replace(/^0/, "") } : {}),
+  ...(openingHoursSpec.length ? { openingHoursSpecification: openingHoursSpec } : {}),
+};
+
 const nav = [
   { href: "/", label: "Accueil" },
   { href: "/carte", label: "La Carte" },
@@ -21,7 +50,18 @@ const nav = [
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{pageTitle}</title>
     <meta name="description" content={desc} />
+    <link rel="canonical" href={canonical} />
+    <meta name="robots" content="index, follow" />
     <link rel="icon" type="image/png" href="/logo.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={desc} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content="fr_FR" />
+    <meta name="twitter:card" content="summary" />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
