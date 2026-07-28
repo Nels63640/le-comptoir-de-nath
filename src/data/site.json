@@ -14,31 +14,31 @@
   "hours": [
     {
       "day": "Lundi",
-      "value": "7h - 22h"
+      "value": "7h - 21h"
     },
     {
       "day": "Mardi",
-      "value": "7h - 22h"
+      "value": "7h - 21h"
     },
     {
       "day": "Mercredi",
-      "value": "7h - 22h"
+      "value": "7h - 21h"
     },
     {
       "day": "Jeudi",
-      "value": "7h - 22h"
+      "value": "7h - 21h"
     },
     {
       "day": "Vendredi",
-      "value": "7h - 22h"
+      "value": "7h - 21h"
     },
     {
       "day": "Samedi",
-      "value": "7h - 22h"
+      "value": "7h - 21h"
     },
     {
       "day": "Dimanche",
-      "value": "7h - 22h"
+      "value": "7h - 21h"
     }
   ],
   "address": "23 Avenue du Plan d'Eau",
