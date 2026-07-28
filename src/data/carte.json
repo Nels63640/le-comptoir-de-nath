@@ -299,9 +299,17 @@
       "subtitle": "Pression & bouteille",
       "items": [
         {
-          "name": "Demi pression 25cl",
+          "name": "Demi pression  du moment 25cl",
           "desc": "",
-          "price": "3,00"
+          "price": "3,70 "
+        },
+        {
+          "name": "Demi pression  Tuborg 25 cl",
+          "price": "3.00 "
+        },
+        {
+          "name": "Picon - Bière",
+          "price": "3.50 "
         },
         {
           "name": "Panaché",
@@ -329,34 +337,47 @@
           "price": "2,00"
         },
         {
-          "name": "Leffe 33cl",
+          "name": "Leffe blonde 33cl",
           "desc": "Bouteille",
-          "price": "3,50"
+          "price": "4.00 "
         },
         {
-          "name": "Pelfort 33cl",
+          "name": "Pelfort brune 33cl",
           "desc": "Bouteille",
-          "price": "3,50"
+          "price": "4.00 "
         },
         {
           "name": "Desperados 33cl",
           "desc": "Bouteille",
-          "price": "3,50"
-        },
-        {
-          "name": "Bière sans alcool 25cl",
-          "desc": "",
-          "price": "3,00"
-        },
-        {
-          "name": "Bouteille d'eau",
-          "desc": "",
-          "price": "1,50"
+          "price": "4.00 "
         },
         {
           "name": "Bière Bougnat (blonde)",
           "desc": "Bière locale et artisanale",
           "price": "5"
+        },
+        {
+          "name": "Bière Bougnat (Ambré)",
+          "price": "5.00 ",
+          "desc": "Bière locale et artisanale"
+        },
+        {
+          "name": "Bière Bougnat (Myrtille)",
+          "desc": "Bière locale et artisanale",
+          "price": "5.00 "
+        },
+        {
+          "name": "Bière Bougnat (sans alcool)",
+          "desc": "Bière locale et artisanale",
+          "price": "5.00 "
+        },
+        {
+          "name": "Cidre brut 33 cl",
+          "price": "3.50 "
+        },
+        {
+          "name": "Cidre doux 33 cl",
+          "price": "3.50 "
         }
       ]
     },
@@ -414,6 +435,10 @@
           "name": "Pago",
           "desc": "Jus de fruits",
           "price": "3,00"
+        },
+        {
+          "name": "Bouteille d'eau",
+          "price": "1.50 €"
         }
       ]
     },
