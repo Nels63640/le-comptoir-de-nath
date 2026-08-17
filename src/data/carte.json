@@ -453,8 +453,13 @@
       "items": [
         {
           "name": "Ricard",
-          "desc": "",
+          "desc": "Momie",
           "price": "2,00"
+        },
+        {
+          "name": "Richard",
+          "price": "4,00",
+          "desc": "Double"
         },
         {
           "name": "Tomate",
