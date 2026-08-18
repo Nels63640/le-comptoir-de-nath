@@ -201,47 +201,47 @@
       "items": [
         {
           "name": "Choco liégeois",
-          "desc": "",
+          "desc": "2 boules Chocolat, 1boule Vanille, sauce chocolat et crème fouettée",
           "price": "7,50"
         },
         {
           "name": "Café liégeois",
-          "desc": "",
+          "desc": "2 boules Café,1 boule Vanille, sauce café et crème fouettée",
           "price": "7,50"
         },
         {
           "name": "Caramel liégeois",
-          "desc": "",
+          "desc": "2 boules Caramel, 1 boule Vanille, sauce caramel et crème fouettée",
           "price": "7,50"
         },
         {
           "name": "Dame Blanche",
-          "desc": "",
+          "desc": "3 boules Vanille, sauce chocolat et crème fouettée",
           "price": "7,50"
         },
         {
           "name": "Fraise Melba",
-          "desc": "",
+          "desc": "3 boules Vanille, morceaux de Fraises, coulis de fruits rouges et crème fouettée",
           "price": "7,50"
         },
         {
           "name": "Belle Hélène",
-          "desc": "",
+          "desc": "3 boules Vanille, morceaux de poire et sauce chocolat",
           "price": "7,50"
         },
         {
           "name": "Coupe Verger",
-          "desc": "",
+          "desc": "1 boule Poire, 1 boule Citron, 1 boule Pêche, coulis de fruits rouges et crème fouettée",
           "price": "7,50"
         },
         {
           "name": "Banana Split",
-          "desc": "",
+          "desc": "1 boule Vanille, 1 boule Chocolat, 1 boule Fraise, morceaux de banane, sauce chocolat et crème fouetée",
           "price": "8,00"
         },
         {
           "name": "Coupe Colonel",
-          "desc": "",
+          "desc": "2 boules de Citron Vert arrosées de Vodka*",
           "price": "8,50"
         }
       ]
