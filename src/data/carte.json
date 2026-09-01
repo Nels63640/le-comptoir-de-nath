@@ -539,19 +539,24 @@
           "price": "1,50"
         },
         {
+          "name": "Kir grand ",
+          "desc": "Cassis, vin blanc ",
+          "price": "2"
+        },
+        {
           "name": "Pétillant",
           "desc": "Café de Paris brut",
           "price": "2,50"
         },
         {
-          "name": "Vin rouge / rosé / blanc",
-          "desc": "Verre supérieur",
-          "price": "1,50"
-        },
-        {
           "name": "Vin blanc ",
           "desc": "Moelleux ",
           "price": "2,00"
+        },
+        {
+          "name": "Vin rouge / rosé / blanc",
+          "desc": "Verre supérieur",
+          "price": "1,50"
         }
       ]
     },
