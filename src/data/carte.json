@@ -557,6 +557,11 @@
           "name": "Vin rouge / rosé / blanc",
           "desc": "Verre supérieur",
           "price": "1,50"
+        },
+        {
+          "name": "Vin Moelleux ",
+          "desc": "Blanc",
+          "price": "2"
         }
       ]
     },
