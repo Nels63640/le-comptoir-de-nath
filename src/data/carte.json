@@ -8,22 +8,22 @@
         {
           "name": "La Simple",
           "desc": "Jambon blanc, emmental ",
-          "price": "7,50"
+          "price": "8"
         },
         {
           "name": "La Complète",
           "desc": "Œuf, Saint-Nectaire, jambon blanc",
-          "price": "9,00"
+          "price": "9,50"
         },
         {
           "name": "La 3 Fromages",
           "desc": "St Nectaire, Bleu d'Auvergne, Cantal",
-          "price": "9,50"
+          "price": "10"
         },
         {
           "name": "L'Auvergnate",
           "desc": "Pomme de terre, St Nectaire, tome fraîche, jambon d'Auvergne ",
-          "price": "9,50"
+          "price": "10"
         }
       ]
     },
