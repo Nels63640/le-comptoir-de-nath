@@ -525,6 +525,11 @@
           "name": "Baileys",
           "desc": "",
           "price": "4,00"
+        },
+        {
+          "name": "Menthe-Pastillé",
+          "desc": "2cl",
+          "price": "3.00"
         }
       ]
     },
