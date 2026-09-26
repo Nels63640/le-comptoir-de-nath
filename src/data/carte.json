@@ -8,7 +8,7 @@
         {
           "name": "La Simple",
           "desc": "Jambon blanc, emmental ",
-          "price": "8"
+          "price": "9"
         },
         {
           "name": "La Complète",
@@ -23,7 +23,12 @@
         {
           "name": "L'Auvergnate",
           "desc": "Pomme de terre, St Nectaire, tome fraîche, jambon d'Auvergne ",
-          "price": "10"
+          "price": "10,50"
+        },
+        {
+          "name": "Galette Blé noir",
+          "desc": "Blé noirbeurre",
+          "price": "8"
         }
       ]
     },
