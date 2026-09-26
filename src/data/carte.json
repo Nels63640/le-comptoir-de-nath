@@ -6,6 +6,11 @@
       "subtitle": "Blé noir",
       "items": [
         {
+          "name": "Galette Blé noir",
+          "desc": "Blé noirbeurre",
+          "price": "8"
+        },
+        {
           "name": "La Simple",
           "desc": "Jambon blanc, emmental ",
           "price": "9"
@@ -24,11 +29,6 @@
           "name": "L'Auvergnate",
           "desc": "Pomme de terre, St Nectaire, tome fraîche, jambon d'Auvergne ",
           "price": "10,50"
-        },
-        {
-          "name": "Galette Blé noir",
-          "desc": "Blé noirbeurre",
-          "price": "8"
         }
       ]
     },
