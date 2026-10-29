@@ -8,7 +8,7 @@
         {
           "name": "Galette Blé noir",
           "desc": "Blé noirbeurre",
-          "price": "8"
+          "price": "7"
         },
         {
           "name": "La Simple",
@@ -89,17 +89,17 @@
         {
           "name": "La Norvégienne",
           "desc": "Truite ou saumon fumé, poireaux, crème",
-          "price": "9,50"
+          "price": "10"
         },
         {
           "name": "La Poulette",
           "desc": "Poulet ou dinde, oignon, persillade, poireaux, crème",
-          "price": "9,50"
+          "price": "10"
         },
         {
           "name": "La Robiquette",
           "desc": "Saucisse fumée (morteau), oignon, emmental",
-          "price": "9,50"
+          "price": "10"
         }
       ]
     },
@@ -152,8 +152,8 @@
         },
         {
           "name": "Tous parfums",
-          "desc": "Au choix : sucre, pâte à tartiner, caramel maison, chocolat, noix de coco, myrtille, fruits rouges",
-          "price": "4,00"
+          "desc": "Au choix : pâte à tartiner, caramel maison, chocolat, noix de coco, myrtille, marron",
+          "price": "5,00"
         },
         {
           "name": "Chantilly",
