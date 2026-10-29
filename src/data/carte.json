@@ -148,12 +148,12 @@
         {
           "name": "Sucre glace",
           "desc": "",
-          "price": "4.00 "
+          "price": "4"
         },
         {
           "name": "Tous parfums",
           "desc": "Au choix : pâte à tartiner, caramel maison, chocolat, noix de coco, myrtille, marron",
-          "price": "5,00"
+          "price": "5"
         },
         {
           "name": "Chantilly",
