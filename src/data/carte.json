@@ -565,16 +565,17 @@
         },
         {
           "name": "Vin rouge / rosé / blanc",
-          "desc": "Verre supérieur",
+          "desc": "Vin supérieur",
           "price": "1,50"
+        },
+        {
+          "name": "Grand Verre Vin rouge / rosé / blanc",
+          "price": "2",
+          "desc": "Vin supérieur"
         },
         {
           "name": "Vin Moelleux ",
           "desc": "Blanc",
-          "price": "2"
-        },
-        {
-          "name": "Grand Verre Vin rouge / rosé / blanc",
           "price": "2"
         }
       ]
